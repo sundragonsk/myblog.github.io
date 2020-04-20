@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>使用hexo搭建个人网站-部署coding变更点</title>
+    <url>/2020/04/20/changeCodingNew/</url>
+    <content><![CDATA[<p>*由于我使用mac，所以本文基于mac讲述搭建过程<br>由于coding改版，上传域名有算改变。改为：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">https://e.coding.net/XX/XX.git</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>在coding网站上设置个人网站的选项也有算改变，改变如下：</p>
+<p>个人登陆首页-&gt;网站项目-&gt;持续部署-&gt;静态网站</p>
+<p><img src="//sundragonsk.com/2020/04/20/changeCodingNew/codingPage.png" alt="codingPage"></p>
+<p>具体设定就可以在这里设定了，值得注意的是如果域名绑定没有成功，有可能会让你去在域名解析下<br>添加一个【text记录】具体内容，如下：</p>
+<p><img src="//sundragonsk.com/2020/04/20/changeCodingNew/setting.png" alt="setting"></p>
+<p>如果设定好回到coding进行绑定后就可以正常使用了</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>hexo</category>
+        <category>线上部署</category>
+      </categories>
+      <tags>
+        <tag>搭建网站</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>hexo不能插入图片的问题</title>
+    <url>/2020/04/20/doNotAddImage/</url>
+    <content><![CDATA[<p>hexo默认无法自动处理文章插入本地图片，需要通过扩展插件支持和修改一些代码。<br><a id="more"></a><br>图片路径问题<br>配置_config.yml里面的post_asset_folder:false这个选项设置为true。</p>
+<p>安装hexo-asset-image，运行hexo n “xxxx”来生成md博文时，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹，把图片放入该文件夹。</p>
+<p>使用<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line"></span><br><span class="line">问题</span><br><span class="line">由于hexo3版本后对很多插件支持有问题，hexo-asset-image插件在处理data.permalink链接时出现路径错误，把年月去掉了，导致最后生成的路径为%d/xxx/xxx需要对其做兼容处理。通过判断当前版本是否等于3的版本做不同的路径分割。</span><br><span class="line"></span><br><span class="line">可直接安装已经修改过得插件</span><br><span class="line">```&#123;bash&#125;</span><br><span class="line">npm install https://github.com/7ym0n/hexo-asset-image --sa。</span><br></pre></td></tr></table></figure></p>
+<p>参考链接：<a href="https://www.jianshu.com/p/3db6a61d3782" target="_blank" rel="noopener">https://www.jianshu.com/p/3db6a61d3782</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>hexo</category>
+        <category>图片插入</category>
+      </categories>
+      <tags>
+        <tag>搭建网站</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>背景雨特效</title>
+    <url>/2020/04/20/codeRainEffct/</url>
+    <content><![CDATA[<p>这篇适合喜欢程序的人观看<br><a id="more"></a><br>新建 <figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">``` javascript</span><br><span class="line">window.onload = function()&#123;</span><br><span class="line">    //获取画布对象</span><br><span class="line">    var canvas = document.getElementById(&quot;canvas&quot;);</span><br><span class="line">    //获取画布的上下文</span><br><span class="line">    var context =canvas.getContext(&quot;2d&quot;);</span><br><span class="line">    var s = window.screen;</span><br><span class="line">    var W = canvas.width = s.width;</span><br><span class="line">    var H = canvas.height;</span><br><span class="line">    //获取浏览器屏幕的宽度和高度</span><br><span class="line">    //var W = window.innerWidth;</span><br><span class="line">    //var H = window.innerHeight;</span><br><span class="line">    //设置canvas的宽度和高度</span><br><span class="line">    canvas.width = W;</span><br><span class="line">    canvas.height = H;</span><br><span class="line">    //每个文字的字体大小</span><br><span class="line">    var fontSize = 12;</span><br><span class="line">    //计算列</span><br><span class="line">    var colunms = Math.floor(W /fontSize);	</span><br><span class="line">    //记录每列文字的y轴坐标</span><br><span class="line">    var drops = [];</span><br><span class="line">    //给每一个文字初始化一个起始点的位置</span><br><span class="line">    for(var i=0;i&lt;colunms;i++)&#123;</span><br><span class="line">        drops.push(0);</span><br><span class="line">    &#125;</span><br><span class="line">    //运动的文字</span><br><span class="line">    var str =&quot;WELCOME TO WWW.ITRHX.COM&quot;;</span><br><span class="line">    //4:fillText(str,x,y);原理就是去更改y的坐标位置</span><br><span class="line">    //绘画的函数</span><br><span class="line">    function draw()&#123;</span><br><span class="line">        context.fillStyle = &quot;rgba(238,238,238,.08)&quot;;//遮盖层</span><br><span class="line">        context.fillRect(0,0,W,H);</span><br><span class="line">        //给字体设置样式</span><br><span class="line">        context.font = &quot;600 &quot;+fontSize+&quot;px  Georgia&quot;;</span><br><span class="line">        //给字体添加颜色</span><br><span class="line">        context.fillStyle = [&quot;#33B5E5&quot;, &quot;#0099CC&quot;, &quot;#AA66CC&quot;, &quot;#9933CC&quot;, &quot;#99CC00&quot;, &quot;#669900&quot;, &quot;#FFBB33&quot;, &quot;#FF8800&quot;, &quot;#FF4444&quot;, &quot;#CC0000&quot;][parseInt(Math.random() * 10)];//randColor();可以rgb,hsl, 标准色，十六进制颜色</span><br><span class="line">        //写入画布中</span><br><span class="line">        for(var i=0;i&lt;colunms;i++)&#123;</span><br><span class="line">            var index = Math.floor(Math.random() * str.length);</span><br><span class="line">            var x = i*fontSize;</span><br><span class="line">            var y = drops[i] *fontSize;</span><br><span class="line">            context.fillText(str[index],x,y);</span><br><span class="line">            //如果要改变时间，肯定就是改变每次他的起点</span><br><span class="line">            if(y &gt;= canvas.height &amp;&amp; Math.random() &gt; 0.99)&#123;</span><br><span class="line">                drops[i] = 0;</span><br><span class="line">            &#125;</span><br><span class="line">            drops[i]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    function randColor()&#123;//随机颜色</span><br><span class="line">        var r = Math.floor(Math.random() * 256);</span><br><span class="line">        var g = Math.floor(Math.random() * 256);</span><br><span class="line">        var b = Math.floor(Math.random() * 256);</span><br><span class="line">        return &quot;rgb(&quot;+r+&quot;,&quot;+g+&quot;,&quot;+b+&quot;)&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    draw();</span><br><span class="line">    setInterval(draw,35);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>在主题文件的相关css文件中（以 next7.8.0 主题为例，在\themes\next\source\css\main.styl 文件末尾）添加以下代码：<br><figure class="highlight css"><table><tr><td class="code"><pre><span class="line"><span class="selector-tag">canvas</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">min-width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">min-height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: auto;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>然后在主题的 _layout.swig 文件中引入即可：<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数字雨 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"1440"</span> <span class="attr">height</span>=<span class="string">"900"</span> &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/DigitalRain.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>最终效果<br><img src="//sundragonsk.com/2020/04/20/codeRainEffct/codeRainEffct.png" alt="sample"></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>hexo</category>
+        <category>画面特效</category>
+      </categories>
+      <tags>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>使用hexo（next主题）和github搭建个人网站</title>
+    <url>/2017/12/21/hexoblog/</url>
+    <content><![CDATA[<p>*由于我使用mac，所以本文基于mac讲述搭建过程</p>
+<h2 id="安装npm"><a href="#安装npm" class="headerlink" title="安装npm"></a>安装npm</h2><h2 id="安装hexo"><a href="#安装hexo" class="headerlink" title="安装hexo"></a>安装hexo</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install -g hexo</span><br></pre></td></tr></table></figure>
+<h2 id="创建项目"><a href="#创建项目" class="headerlink" title="创建项目"></a>创建项目</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo init $projectName ##projectName可以任意取名</span><br></pre></td></tr></table></figure>
+<h2 id="测试创建是否成功"><a href="#测试创建是否成功" class="headerlink" title="测试创建是否成功"></a>测试创建是否成功</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd $projectName</span><br><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>结果：</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">10:28:08.788 DEBUG Generator: category</span><br><span class="line">10:28:08.788 DEBUG Generator: tag</span><br><span class="line">10:28:08.789 DEBUG Generator: asset</span><br><span class="line">10:28:08.796 INFO  Hexo is running at http://localhost:4000/. Press Ctrl+C to stop.</span><br><span class="line">10:28:08.806 DEBUG Database saved</span><br></pre></td></tr></table></figure>
+<p>出现上述字样后，在本地浏览器填写上方图频显示的<a href="http://localhost:4000/,测试是否可以显示hexo默认网站，如果显示成功说明项目创建成功。（没有失败过所以具体失败时解决方法查看其他网站）" target="_blank" rel="noopener">http://localhost:4000/,测试是否可以显示hexo默认网站，如果显示成功说明项目创建成功。（没有失败过所以具体失败时解决方法查看其他网站）</a></p>
+<h2 id="下载next主题"><a href="#下载next主题" class="headerlink" title="下载next主题"></a>下载next主题</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">cd $projectName</span><br><span class="line">cd themes</span><br><span class="line">git clone --branch v5.1.2 https://github.com/iissnan/hexo-theme-next next;</span><br></pre></td></tr></table></figure>
+<h2 id="测试主题加载是否成功"><a href="#测试主题加载是否成功" class="headerlink" title="测试主题加载是否成功"></a>测试主题加载是否成功</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo s --debug</span><br></pre></td></tr></table></figure>
+<h2 id="添加tags和categories（可略过）"><a href="#添加tags和categories（可略过）" class="headerlink" title="添加tags和categories（可略过）"></a>添加tags和categories（可略过）</h2><h3 id="categories"><a href="#categories" class="headerlink" title="categories"></a>categories</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;categories&quot;</span><br></pre></td></tr></table></figure>
+<p> 会生成categories文件夹，在文件夹中自动生成index.md，在index.md文件中添加一下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: categories</span><br><span class="line"></span><br><span class="line">date: 2017-12-21 16:08:50</span><br><span class="line"></span><br><span class="line">type: &quot;categories&quot;</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h3 id="tags"><a href="#tags" class="headerlink" title="tags"></a>tags</h3><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">hexo new page &quot;tags&quot;</span><br></pre></td></tr></table></figure>
+<p> 会生成categories文件夹，在文件夹中自动生成index.md，在index.md文件中添加一下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line">title: tags</span><br><span class="line"></span><br><span class="line">date: 2017-12-21 16:08:50</span><br><span class="line"></span><br><span class="line">type: &quot;tags&quot;</span><br><span class="line"></span><br><span class="line">---</span><br></pre></td></tr></table></figure>
+<h2 id="测试tags和categories是否成功（可略过）"><a href="#测试tags和categories是否成功（可略过）" class="headerlink" title="测试tags和categories是否成功（可略过）"></a>测试tags和categories是否成功（可略过）</h2><h2 id="github创建账号和仓库"><a href="#github创建账号和仓库" class="headerlink" title="github创建账号和仓库"></a>github创建账号和仓库</h2><h2 id="修改”-config-yml”"><a href="#修改”-config-yml”" class="headerlink" title="修改”_config.yml”"></a>修改”_config.yml”</h2><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">url: http://自己的域名也可以是git的.com</span><br><span class="line">root: / ##git一定要改成自己仓库的指向后面加／</span><br><span class="line"></span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo:  </span><br><span class="line">    github: git@github.com:xxxxx/xxxxx.github.io  ##git的仓库位置</span><br><span class="line">    coding: git@git.coding.net:xxxxx/xxxxxxxx.git ##coding的仓库位置，不需要可略过</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
+<h2 id="提交代码"><a href="#提交代码" class="headerlink" title="提交代码"></a>提交代码</h2><pre><code class="{bash}">hexo clean
+hexo g  ##保存
+hexo d  ##提交
+hexo s --debug #debug 运行
+</code></pre>
+<h2 id="创建新文章"><a href="#创建新文章" class="headerlink" title="创建新文章"></a>创建新文章</h2><pre><code class="{bash}">hexo new 文章名
+</code></pre>
+<p>全文参考：</p>
+<p>lemonxq:<a href="http://blog.csdn.net/lemonxq/article/details/72676005" target="_blank" rel="noopener">http://blog.csdn.net/lemonxq/article/details/72676005</a></p>
+<p>Xiaoxiaoqian:<a href="https://juejin.im/post/58eb2fd2a0bb9f006928f8c7" target="_blank" rel="noopener">https://juejin.im/post/58eb2fd2a0bb9f006928f8c7</a></p>
+<p>markdown语法：<a href="http://wowubuntu.com/markdown/" target="_blank" rel="noopener">http://wowubuntu.com/markdown/</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>搭建网站</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>mac安装mysql以及问题</title>
+    <url>/2020/04/19/installMysqlForLocal/</url>
+    <content><![CDATA[<p>*由于我使用mac，所以本文基于mac讲述搭建过程</p>
+<h2 id="1-官方下载地址"><a href="#1-官方下载地址" class="headerlink" title="1.官方下载地址"></a>1.官方下载地址</h2><p><a href="https://dev.mysql.com/downloads/mysql/" target="_blank" rel="noopener">https://dev.mysql.com/downloads/mysql/</a><br><a id="more"></a></p>
+<h2 id="2-步骤"><a href="#2-步骤" class="headerlink" title="2.步骤"></a>2.步骤</h2><p>1.1 下载完成后，双击直接安装，按照步骤走，在最后会提示输入八位密码<br>1.2 安装完成后，点击系统偏好设置，选择MySQL<br><img src="//sundragonsk.com/2020/04/19/installMysqlForLocal/mysqlSetting.png" alt="setting"><br>1.3 可以看到数据库的活动实例，配置等信息，启动数据库服务（可选择随电脑启动，默认已勾选）</p>
+<ul>
+<li>注意有可能在按下start键后出现如下错误:<br><font color="red">Warring the /usr/local/mysql/data directory is not owned by the ‘mysql’ or ‘_mysql’ user &lt;/&gt;<br>这应该是某种情况下导致/usr/local/mysql/data的宿主发生了改变。<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">sudo chown -R mysql /usr/local/mysql/data</span><br><span class="line">或者</span><br><span class="line">sudo chown -R  _mysql:wheel  /usr/local/mysql/data</span><br><span class="line"></span><br><span class="line">参数说明：</span><br><span class="line">-c 显示更改的部分的信息</span><br><span class="line">-f 忽略错误信息</span><br><span class="line">-h 修复符号链接</span><br><span class="line">-R 处理指定目录以及其子目录下的所有文件</span><br><span class="line">-v 显示详细的处理信息</span><br><span class="line">``` g</span><br><span class="line">1.4 以上mysql已经装好，想在终端直接使用mysql 指令，还需配置路径，打开.bash_profile 文件，添加PATH=$PATH:/usr/local/mysql/bin，步骤如下</span><br><span class="line">```&#123;bash&#125;</span><br><span class="line">cd /usr/local/mysql/bin4</span><br><span class="line">vim ~/.bash_profile</span><br><span class="line">添加内容：</span><br><span class="line">  PATH=$PATH:/usr/local/mysql/bin</span><br><span class="line">想要配置的内容立即生效：</span><br><span class="line">  source ~/.bash_profile</span><br></pre></td></tr></table></figure></font></li>
+</ul>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>mysql运用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在mac环境下修改pip镜像源以及出现问题</title>
+    <url>/2019/11/28/mac-change-pipMirror-routing/</url>
+    <content><![CDATA[<p>中国内部还是快，需要的人可以尝试改一下。<br><a id="more"></a><br>1.进入根目录：cd ~/<br>2.进入.pip目录 cd .pip<br>3.如果不存在文件夹就新建mkdir .pip<br>4.进入 cd .pip<br>5.创建pip.conf文件 (使用vscode的情况)code pip.conf<br>**注意<br>·问题<br>pip的时候出现Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None))…………<br>·原因<br>pip的时候各种关卡限制了它的网速，导致网速过慢或者安装失败<br>·解决方案<br>换成国内的镜像</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">永久修改</span><br><span class="line">[global]</span><br><span class="line">index-url = https://pypi.tuna.tsinghua.edu.cn/simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host=mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
+<p><strong><br>国内镜像源参考<br>阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/" target="_blank" rel="noopener">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>豆瓣(douban) <a href="http://pypi.douban.com/simple/" target="_blank" rel="noopener">http://pypi.douban.com/simple/</a><br>清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/" target="_blank" rel="noopener">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/" target="_blank" rel="noopener">http://pypi.mirrors.ustc.edu.cn/simple/</a>
+</strong></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+      </categories>
+      <tags>
+        <tag>pip修改源</tag>
+      </tags>
+  </entry>
+</search>
