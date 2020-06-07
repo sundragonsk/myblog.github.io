@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,18 +21,17 @@
   </script>
 
   <meta name="description" content="这篇适合喜欢程序的人观看">
-<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="背景雨特效">
 <meta property="og:url" content="http://www.sundragonsk.com/2020/04/20/codeRainEffct/index.html">
 <meta property="og:site_name" content="逸恺小栈">
 <meta property="og:description" content="这篇适合喜欢程序的人观看">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.sundragonsk.com/2020/04/20/codeRainEffct/codeRainEffct.png">
-<meta property="og:updated_time" content="2020-04-20T16:36:05.520Z">
+<meta property="article:published_time" content="2020-04-20T15:39:12.000Z">
+<meta property="article:modified_time" content="2020-04-20T16:36:05.520Z">
+<meta property="article:author" content="sundragonsk">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="背景雨特效">
-<meta name="twitter:description" content="这篇适合喜欢程序的人观看">
 <meta name="twitter:image" content="http://www.sundragonsk.com/2020/04/20/codeRainEffct/codeRainEffct.png">
 
 <link rel="canonical" href="http://www.sundragonsk.com/2020/04/20/codeRainEffct/">
@@ -229,15 +228,15 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/hexo/画面特效/" itemprop="url" rel="index"><span itemprop="name">画面特效</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/hexo/%E7%94%BB%E9%9D%A2%E7%89%B9%E6%95%88/" itemprop="url" rel="index"><span itemprop="name">画面特效</span></a>
                 </span>
             </span>
 
@@ -261,11 +260,14 @@
       
         <p>这篇适合喜欢程序的人观看</p>
 <a id="more"></a>
+
 <p> 新建 <font color="red">DigitalRain.js &lt;/&gt; ，写入以下代码</font></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">//获取画布对象</span></span><br><span class="line">    <span class="keyword">var</span> canvas = <span class="built_in">document</span>.getElementById(<span class="string">"canvas"</span>);</span><br><span class="line">    <span class="comment">//获取画布的上下文</span></span><br><span class="line">    <span class="keyword">var</span> context =canvas.getContext(<span class="string">"2d"</span>);</span><br><span class="line">    <span class="keyword">var</span> s = <span class="built_in">window</span>.screen;</span><br><span class="line">    <span class="keyword">var</span> W = canvas.width = s.width;</span><br><span class="line">    <span class="keyword">var</span> H = canvas.height;</span><br><span class="line">    <span class="comment">//获取浏览器屏幕的宽度和高度</span></span><br><span class="line">    <span class="comment">//var W = window.innerWidth;</span></span><br><span class="line">    <span class="comment">//var H = window.innerHeight;</span></span><br><span class="line">    <span class="comment">//设置canvas的宽度和高度</span></span><br><span class="line">    canvas.width = W;</span><br><span class="line">    canvas.height = H;</span><br><span class="line">    <span class="comment">//每个文字的字体大小</span></span><br><span class="line">    <span class="keyword">var</span> fontSize = <span class="number">12</span>;</span><br><span class="line">    <span class="comment">//计算列</span></span><br><span class="line">    <span class="keyword">var</span> colunms = <span class="built_in">Math</span>.floor(W /fontSize);	</span><br><span class="line">    <span class="comment">//记录每列文字的y轴坐标</span></span><br><span class="line">    <span class="keyword">var</span> drops = [];</span><br><span class="line">    <span class="comment">//给每一个文字初始化一个起始点的位置</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;colunms;i++)&#123;</span><br><span class="line">        drops.push(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//运动的文字</span></span><br><span class="line">    <span class="keyword">var</span> str =<span class="string">"WELCOME TO WWW.ITRHX.COM"</span>;</span><br><span class="line">    <span class="comment">//4:fillText(str,x,y);原理就是去更改y的坐标位置</span></span><br><span class="line">    <span class="comment">//绘画的函数</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">draw</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        context.fillStyle = <span class="string">"rgba(238,238,238,.08)"</span>;<span class="comment">//遮盖层</span></span><br><span class="line">        context.fillRect(<span class="number">0</span>,<span class="number">0</span>,W,H);</span><br><span class="line">        <span class="comment">//给字体设置样式</span></span><br><span class="line">        context.font = <span class="string">"600 "</span>+fontSize+<span class="string">"px  Georgia"</span>;</span><br><span class="line">        <span class="comment">//给字体添加颜色</span></span><br><span class="line">        context.fillStyle = [<span class="string">"#33B5E5"</span>, <span class="string">"#0099CC"</span>, <span class="string">"#AA66CC"</span>, <span class="string">"#9933CC"</span>, <span class="string">"#99CC00"</span>, <span class="string">"#669900"</span>, <span class="string">"#FFBB33"</span>, <span class="string">"#FF8800"</span>, <span class="string">"#FF4444"</span>, <span class="string">"#CC0000"</span>][<span class="built_in">parseInt</span>(<span class="built_in">Math</span>.random() * <span class="number">10</span>)];<span class="comment">//randColor();可以rgb,hsl, 标准色，十六进制颜色</span></span><br><span class="line">        <span class="comment">//写入画布中</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>;i&lt;colunms;i++)&#123;</span><br><span class="line">            <span class="keyword">var</span> index = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * str.length);</span><br><span class="line">            <span class="keyword">var</span> x = i*fontSize;</span><br><span class="line">            <span class="keyword">var</span> y = drops[i] *fontSize;</span><br><span class="line">            context.fillText(str[index],x,y);</span><br><span class="line">            <span class="comment">//如果要改变时间，肯定就是改变每次他的起点</span></span><br><span class="line">            <span class="keyword">if</span>(y &gt;= canvas.height &amp;&amp; <span class="built_in">Math</span>.random() &gt; <span class="number">0.99</span>)&#123;</span><br><span class="line">                drops[i] = <span class="number">0</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            drops[i]++;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">randColor</span>(<span class="params"></span>)</span>&#123;<span class="comment">//随机颜色</span></span><br><span class="line">        <span class="keyword">var</span> r = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">256</span>);</span><br><span class="line">        <span class="keyword">var</span> g = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">256</span>);</span><br><span class="line">        <span class="keyword">var</span> b = <span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random() * <span class="number">256</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"rgb("</span>+r+<span class="string">","</span>+g+<span class="string">","</span>+b+<span class="string">")"</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    draw();</span><br><span class="line">    setInterval(draw,<span class="number">35</span>);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<p>在主题文件的相关css文件中（以 next7.8.0 主题为例，在\themes\next\source\css\main.styl 文件末尾）添加以下代码：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">canvas</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">min-width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">min-height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: auto;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>然后在主题的 _layout.swig 文件中引入即可：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数字雨 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"1440"</span> <span class="attr">height</span>=<span class="string">"900"</span> &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/DigitalRain.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
-<p>最终效果<br><img src="//www.sundragonsk.com/2020/04/20/codeRainEffct/codeRainEffct.png" alt="sample"></p>
+<p>在主题文件的相关css文件中（以 next7.8.0 主题为例，在\themes\next\source\css\main.styl 文件末尾）添加以下代码：</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">canvas</span> &#123;</span><br><span class="line">  <span class="attribute">position</span>: fixed;</span><br><span class="line">  <span class="attribute">right</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">bottom</span>: <span class="number">0px</span>;</span><br><span class="line">  <span class="attribute">min-width</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">min-height</span>: <span class="number">100%</span>;</span><br><span class="line">  <span class="attribute">height</span>: auto;</span><br><span class="line">  <span class="attribute">width</span>: auto;</span><br><span class="line">  <span class="attribute">z-index</span>: -<span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>然后在主题的 _layout.swig 文件中引入即可：</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 数字雨 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">canvas</span> <span class="attr">id</span>=<span class="string">"canvas"</span> <span class="attr">width</span>=<span class="string">"1440"</span> <span class="attr">height</span>=<span class="string">"900"</span> &gt;</span><span class="tag">&lt;/<span class="name">canvas</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">type</span>=<span class="string">"text/javascript"</span> <span class="attr">src</span>=<span class="string">"/js/DigitalRain.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最终效果<br><img src="/2020/04/20/codeRainEffct/codeRainEffct.png" alt="sample"></p>
 
     </div>
 
@@ -398,7 +400,7 @@
 
         
   <div style="display:inline-block">
-      <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备20019051号-1</a>
+      <a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">京ICP备20019051号-1</a>
     
   </div>
   <div style="display:inline-block">
@@ -452,9 +454,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -463,7 +473,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 

@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
 <meta name="theme-color" content="#222">
-<meta name="generator" content="Hexo 3.9.0">
+<meta name="generator" content="Hexo 4.2.1">
   <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
@@ -21,19 +21,19 @@
   </script>
 
   <meta name="description" content="*由于我使用mac，所以本文基于mac讲述搭建过程由于coding改版，上传域名有算改变。如果有相同问题的人可以观看">
-<meta name="keywords" content="搭建网站,hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用hexo搭建个人网站-部署coding变更点">
 <meta property="og:url" content="http://www.sundragonsk.com/2020/04/20/changeCodingNew/index.html">
 <meta property="og:site_name" content="逸恺小栈">
 <meta property="og:description" content="*由于我使用mac，所以本文基于mac讲述搭建过程由于coding改版，上传域名有算改变。如果有相同问题的人可以观看">
-<meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://www.sundragonsk.com/2020/04/20/changeCodingNew/codingPage.png">
 <meta property="og:image" content="http://www.sundragonsk.com/2020/04/20/changeCodingNew/setting.png">
-<meta property="og:updated_time" content="2020-06-05T15:37:44.245Z">
+<meta property="article:published_time" content="2020-04-20T06:39:12.000Z">
+<meta property="article:modified_time" content="2020-06-05T15:37:44.245Z">
+<meta property="article:author" content="sundragonsk">
+<meta property="article:tag" content="搭建网站">
+<meta property="article:tag" content="hexo">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="使用hexo搭建个人网站-部署coding变更点">
-<meta name="twitter:description" content="*由于我使用mac，所以本文基于mac讲述搭建过程由于coding改版，上传域名有算改变。如果有相同问题的人可以观看">
 <meta name="twitter:image" content="http://www.sundragonsk.com/2020/04/20/changeCodingNew/codingPage.png">
 
 <link rel="canonical" href="http://www.sundragonsk.com/2020/04/20/changeCodingNew/">
@@ -230,15 +230,15 @@
               </span>
               <span class="post-meta-item-text">In</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">技术</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/hexo/" itemprop="url" rel="index"><span itemprop="name">hexo</span></a>
                 </span>
                   , 
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/技术/hexo/线上部署/" itemprop="url" rel="index"><span itemprop="name">线上部署</span></a>
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/hexo/%E7%BA%BF%E4%B8%8A%E9%83%A8%E7%BD%B2/" itemprop="url" rel="index"><span itemprop="name">线上部署</span></a>
                 </span>
             </span>
 
@@ -260,13 +260,15 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>*由于我使用mac，所以本文基于mac讲述搭建过程<br>由于coding改版，上传域名有算改变。如果有相同问题的人可以观看<br><a id="more"></a><br>改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://e.coding.net/XX/XX.git</span><br></pre></td></tr></table></figure>
+        <p>*由于我使用mac，所以本文基于mac讲述搭建过程<br>由于coding改版，上传域名有算改变。如果有相同问题的人可以观看</p>
+<a id="more"></a>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https:&#x2F;&#x2F;e.coding.net&#x2F;XX&#x2F;XX.git</span><br></pre></td></tr></table></figure>
 <p>在coding网站上设置个人网站的选项也有算改变，改变如下：</p>
 <p>个人登陆首页-&gt;网站项目-&gt;持续部署-&gt;静态网站</p>
-<p><img src="//www.sundragonsk.com/2020/04/20/changeCodingNew/codingPage.png" alt="codingPage"></p>
+<p><img src="/2020/04/20/changeCodingNew/codingPage.png" alt="codingPage"></p>
 <p>具体设定就可以在这里设定了，值得注意的是如果域名绑定没有成功，有可能会让你去在域名解析下<br>添加一个【text记录】具体内容，如下：</p>
-<p><img src="//www.sundragonsk.com/2020/04/20/changeCodingNew/setting.png" alt="setting"></p>
+<p><img src="/2020/04/20/changeCodingNew/setting.png" alt="setting"></p>
 <p>如果设定好回到coding进行绑定后就可以正常使用了,请大家试试看</p>
 
     </div>
@@ -277,7 +279,7 @@
 
       <footer class="post-footer">
           <div class="post-tags">
-              <a href="/tags/搭建网站/" rel="tag"># 搭建网站</a>
+              <a href="/tags/%E6%90%AD%E5%BB%BA%E7%BD%91%E7%AB%99/" rel="tag"># 搭建网站</a>
               <a href="/tags/hexo/" rel="tag"># hexo</a>
           </div>
 
@@ -404,7 +406,7 @@
 
         
   <div style="display:inline-block">
-      <a href="http://www.beian.miit.gov.cn" rel="noopener" target="_blank">京ICP备20019051号-1</a>
+      <a href="http://www.beian.miit.gov.cn/" rel="noopener" target="_blank">京ICP备20019051号-1</a>
     
   </div>
   <div style="display:inline-block">
@@ -458,9 +460,17 @@
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
-<script src="/js/utils.js"></script><script src="/js/motion.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
 <script src="/js/schemes/pisces.js"></script>
+
+
 <script src="/js/next-boot.js"></script>
+
 
 
 
@@ -469,7 +479,9 @@
 
 
 
-  <script src="/js/local-search.js"></script>
+  
+<script src="/js/local-search.js"></script>
+
 
 
 
