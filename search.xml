@@ -161,9 +161,9 @@ hexo s --debug #debug 运行</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>在icarus3.0主题下插入备案信息</title>
+    <title>在icarus3.0主题下插入icp以及公安备案信息</title>
     <url>/2020/06/09/icarusAddBeian/</url>
-    <content><![CDATA[<p>由于最新的icarus从ejs改为jsx，之前的所有相关文章都不适用，所以这次以最直接的方式修改。<br>方法很粗暴，欢迎大家对其修正。</p>
+    <content><![CDATA[<p>由于最新的icarus从ejs改为jsx，之前的所有相关文章都不适用，所以这次以最直接的方式修改加入icp备案信息以及公安备案信息。<br>方法很粗暴，欢迎大家对其修正。</p>
 <a id="more"></a>
 <h2 id="一、寻找相关文件"><a href="#一、寻找相关文件" class="headerlink" title="一、寻找相关文件"></a>一、寻找相关文件</h2><p>在themes/icarus/layout/common路径下找到footer.jsx文件</p>
 <h2 id="二、修改文件中代码"><a href="#二、修改文件中代码" class="headerlink" title="二、修改文件中代码"></a>二、修改文件中代码</h2><p>在源文件中找到以下代码</p>
@@ -182,7 +182,7 @@ hexo s --debug #debug 运行</code></pre>
       <categories>
         <category>技术</category>
         <category>icarus</category>
-        <category>备案信息</category>
+        <category>icp以及公安备案信息</category>
       </categories>
       <tags>
         <tag>搭建网站</tag>
