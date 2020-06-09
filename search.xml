@@ -161,7 +161,7 @@ hexo s --debug #debug 运行</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>在icarus主题下插入备案信息</title>
+    <title>在icarus3.0主题下插入备案信息</title>
     <url>/2020/06/09/icarusAddBeian/</url>
     <content><![CDATA[<p>由于最新的icarus从ejs改为jsx，之前的所有相关文章都不使用，所以这次以最直接的方式修改。<br>方法很粗暴，欢迎大家对其修改。</p>
 <a id="more"></a>
