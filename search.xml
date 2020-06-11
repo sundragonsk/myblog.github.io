@@ -189,4 +189,44 @@ hexo s --debug #debug 运行</code></pre>
         <tag>hexo</tag>
       </tags>
   </entry>
+  <entry>
+    <title>使用vscode调试hexo</title>
+    <url>/2020/06/11/debugHexoByVscode/</url>
+    <content><![CDATA[<p>这篇文章适合喜欢使用vscode的朋友使用。</p>
+<a id="more"></a>
+
+<p>##一、创建launch.json<br>可以自动创建也可以自己手动创建文件<br>##二、将launch.json改成以下内容</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">    &#123;</span><br><span class="line">    </span><br><span class="line">    &quot;version&quot;: &quot;0.2.0&quot;,</span><br><span class="line">    &quot;configurations&quot;: [</span><br><span class="line">        &#123;</span><br><span class="line">            &quot;type&quot;: &quot;node&quot;,</span><br><span class="line">            &quot;request&quot;: &quot;launch&quot;,</span><br><span class="line">            &quot;name&quot;: &quot;node&quot;,</span><br><span class="line">            #hexo可执行文件位置</span><br><span class="line">            &quot;program&quot;: &quot;$&#123;workspaceFolder&#125;&#x2F;node_modules&#x2F;hexo&#x2F;bin&#x2F;hexo&quot;,</span><br><span class="line">            &quot;args&quot;: [ #这里是参数，根据自己情况酌情修改</span><br><span class="line">                &quot;s&quot;,</span><br><span class="line">                &quot;--debug&quot;</span><br><span class="line">            ]</span><br><span class="line">        &#125;</span><br><span class="line">    ]</span><br><span class="line">&#125;bash&#125;</span><br></pre></td></tr></table></figure>
+<p>##三、按下执行按钮就进行调试<br>以上就是用vscode调试hexo的方法</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>环境搭建</category>
+      </categories>
+      <tags>
+        <tag>搭建网站</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>在icarus3.0下加入自己的版权信息</title>
+    <url>/2020/06/11/addCopyrightsByicarus3-0/</url>
+    <content><![CDATA[<p>由于最新的icarus从ejs改为jsx，之前的所有相关文章都不适用，这次依然以比较粗暴的方式进行修改，欢迎大家对其修正。</p>
+<a id="more"></a>
+<p>##一、找到article.jsx文件<br>此文件文件位置为icarus/layout/common/article.jsx<br>##二、找到修改位置</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;<span class="comment">/* Content/Excerpt */</span>&#125;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"content"</span> dangerouslySetInnerHTML=&#123;&#123; <span class="attr">__html</span>: index &amp;&amp; page.excerpt ? page.excerpt : page.content &#125;&#125;&gt;&lt;<span class="regexp">/div&gt;</span></span><br></pre></td></tr></table></figure>
+<p>##三、添加修改内容<br>在栏目二叙述的代码下方另起一行，粘贴以下内容</p>
+<figure class="highlight jsx"><table><tr><td class="code"><pre><span class="line">&#123;!index ? </span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">" size-small "</span>&gt;</span><br><span class="line"> &lt;ul <span class="class"><span class="keyword">class</span></span>=<span class="string">"post-copyright"</span>&gt;</span><br><span class="line">  &lt;li&gt;<span class="xml"><span class="tag">&lt;<span class="name">strong</span>&gt;</span>本文标题：<span class="tag">&lt;/<span class="name">strong</span>&gt;</span></span><span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;url_for(page.link</span> ? <span class="attr">page.link</span> <span class="attr">:</span> <span class="attr">page.path</span>)&#125;&gt;</span>&#123;page.title&#125;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  &lt;li&gt;&lt;strong&gt;本文作者：&lt;/</span>strong&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"https://你的网站名字.com"</span>&gt;</span>逸恺 <span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  &lt;li&gt;&lt;strong&gt;本文链接：&lt;/</span>strong&gt;<span class="xml"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&#123;url_for(page.link</span> ? <span class="attr">page.link</span> <span class="attr">:</span> <span class="attr">page.path</span>)&#125;&gt;</span>https://你的网站名字/&#123;page.path&#125;&gt;<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span>&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  &lt;li&gt;&lt;strong&gt;发布时间：&lt;/</span>strong&gt;&#123;date(page.date)&#125;&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp">  &lt;li&gt;&lt;strong&gt;版权声明：&lt;/</span>strong&gt;本博客所有文章除特别声明外，均采用 &lt;a href=<span class="string">"https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh"</span> rel=<span class="string">"external nofollow"</span> target=<span class="string">"_blank"</span>&gt;CC BY-NC-SA <span class="number">4.0</span>&lt;<span class="regexp">/a&gt; 许可协议。转载请注明出处！&lt;/</span>li&gt;</span><br><span class="line">  &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">  &lt;br/</span>&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt; : null&#125;</span></span><br></pre></td></tr></table></figure>
+<p><font color="red" size="4">*注意：</font><br><font color="red">1.代码中的“你的网站名字”中要把前方文字删除后加入自己的网址，例子：sundragonsk.com</font><br><font color="red">2.许可协议根据自身情况酌情修改</font><br>改完后的效果如下：<br><img src="/2020/06/11/addCopyrightsByicarus3-0/sample.png" alt="sample"><br>以上就是在icarus3.0下加入版权信息的相关内容</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>icarus</category>
+        <category>版权信息添加</category>
+      </categories>
+      <tags>
+        <tag>搭建网站</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
 </search>
