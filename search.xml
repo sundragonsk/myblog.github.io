@@ -69,6 +69,29 @@
       </tags>
   </entry>
   <entry>
+    <title>hexo不能插入图片的问题</title>
+    <url>/2020/04/20/doNotAddImage/</url>
+    <content><![CDATA[<p>hexo默认无法自动处理文章插入本地图片，需要通过扩展插件支持和修改一些代码。</p>
+<a id="more"></a>
+<p>图片路径问题<br>配置_config.yml里面的post_asset_folder:false这个选项设置为true。</p>
+<p>安装hexo-asset-image，运行hexo n “xxxx”来生成md博文时，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹，把图片放入该文件夹。</p>
+<p>使用<code>![xxx](xxx/xxx.png)</code>直接插入图片即可。</p>
+<p>问题<br>由于hexo3版本后对很多插件支持有问题，hexo-asset-image插件在处理data.permalink链接时出现路径错误，把年月去掉了，导致最后生成的路径为%d/xxx/xxx需要对其做兼容处理。通过判断当前版本是否等于3的版本做不同的路径分割。</p>
+<p>可直接安装已经修改过得插件</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;7ym0n&#x2F;hexo-asset-image --sa。</span><br></pre></td></tr></table></figure>
+<p>参考链接：<a href="https://www.jianshu.com/p/3db6a61d3782">https://www.jianshu.com/p/3db6a61d3782</a></p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>hexo</category>
+        <category>图片插入</category>
+      </categories>
+      <tags>
+        <tag>搭建网站</tag>
+        <tag>hexo</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>使用vscode调试hexo</title>
     <url>/2020/06/11/debugHexoByVscode/</url>
     <content><![CDATA[<p>这篇文章适合喜欢使用vscode的朋友使用。</p>
@@ -85,38 +108,6 @@
       <tags>
         <tag>搭建网站</tag>
         <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>在mac环境下修改pip镜像源以及出现问题</title>
-    <url>/2019/11/28/mac-change-pipMirror-routing/</url>
-    <content><![CDATA[<p>国内镜像下载速度快，需要的人可以尝试改一下。</p>
-<a id="more"></a>
-<p>1.进入根目录：cd ~/<br>2.进入.pip目录 cd .pip<br>3.如果不存在文件夹就新建mkdir .pip<br>4.进入 cd .pip<br>5.创建pip.conf文件 (使用vscode的情况)code pip.conf<br>**注意<br>·问题<br>pip的时候出现Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None))…………<br>·原因<br>pip的时候各种问题限制了它的网速，导致网速过慢或者安装失败<br>·解决方案<br>换成国内的镜像</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">永久修改</span><br><span class="line">[global]</span><br><span class="line">index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
-<p>**<br>国内镜像源参考<br>阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>豆瓣(douban) <a href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a><br>清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/">http://pypi.mirrors.ustc.edu.cn/simple/</a><br>**</p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>devops</category>
-        <category>pip</category>
-      </categories>
-      <tags>
-        <tag>pip修改源</tag>
-      </tags>
-  </entry>
-  <entry>
-    <title>家庭装修流程以及要点</title>
-    <url>/2021/07/19/decorating/</url>
-    <content><![CDATA[<p>相信每个人都有过一次装修的经历，耗费大量的人力财力，也许还才过不少的坑花了不少冤枉钱，以下的思维导图是我在装修过程中总结的经验，希望对大家有所帮助。</p>
-<a id="more"></a>
-<p><img src="/2021/07/19/decorating/decorating.png" alt="decorating"></p>
-]]></content>
-      <categories>
-        <category>生活</category>
-      </categories>
-      <tags>
-        <tag>装修</tag>
       </tags>
   </entry>
   <entry>
@@ -172,29 +163,6 @@ hexo s --debug #debug 运行</code></pre>
       </tags>
   </entry>
   <entry>
-    <title>hexo不能插入图片的问题</title>
-    <url>/2020/04/20/doNotAddImage/</url>
-    <content><![CDATA[<p>hexo默认无法自动处理文章插入本地图片，需要通过扩展插件支持和修改一些代码。</p>
-<a id="more"></a>
-<p>图片路径问题<br>配置_config.yml里面的post_asset_folder:false这个选项设置为true。</p>
-<p>安装hexo-asset-image，运行hexo n “xxxx”来生成md博文时，/source/_posts文件夹内除了xxxx.md文件还有一个同名的文件夹，把图片放入该文件夹。</p>
-<p>使用<code>![xxx](xxx/xxx.png)</code>直接插入图片即可。</p>
-<p>问题<br>由于hexo3版本后对很多插件支持有问题，hexo-asset-image插件在处理data.permalink链接时出现路径错误，把年月去掉了，导致最后生成的路径为%d/xxx/xxx需要对其做兼容处理。通过判断当前版本是否等于3的版本做不同的路径分割。</p>
-<p>可直接安装已经修改过得插件</p>
-<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">npm install https:&#x2F;&#x2F;github.com&#x2F;7ym0n&#x2F;hexo-asset-image --sa。</span><br></pre></td></tr></table></figure>
-<p>参考链接：<a href="https://www.jianshu.com/p/3db6a61d3782">https://www.jianshu.com/p/3db6a61d3782</a></p>
-]]></content>
-      <categories>
-        <category>技术</category>
-        <category>hexo</category>
-        <category>图片插入</category>
-      </categories>
-      <tags>
-        <tag>搭建网站</tag>
-        <tag>hexo</tag>
-      </tags>
-  </entry>
-  <entry>
     <title>在icarus3.0主题下插入icp以及公安备案信息</title>
     <url>/2020/06/09/icarusAddBeian/</url>
     <content><![CDATA[<p>由于最新的icarus从ejs改为jsx，之前的所有相关文章都不适用，所以这次以最直接的方式修改加入icp备案信息以及公安备案信息。<br>方法很粗暴，欢迎大家对其修正。</p>
@@ -224,6 +192,24 @@ hexo s --debug #debug 运行</code></pre>
       </tags>
   </entry>
   <entry>
+    <title>在mac环境下修改pip镜像源以及出现问题</title>
+    <url>/2019/11/28/mac-change-pipMirror-routing/</url>
+    <content><![CDATA[<p>国内镜像下载速度快，需要的人可以尝试改一下。</p>
+<a id="more"></a>
+<p>1.进入根目录：cd ~/<br>2.进入.pip目录 cd .pip<br>3.如果不存在文件夹就新建mkdir .pip<br>4.进入 cd .pip<br>5.创建pip.conf文件 (使用vscode的情况)code pip.conf<br>**注意<br>·问题<br>pip的时候出现Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None))…………<br>·原因<br>pip的时候各种问题限制了它的网速，导致网速过慢或者安装失败<br>·解决方案<br>换成国内的镜像</p>
+<figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">永久修改</span><br><span class="line">[global]</span><br><span class="line">index-url &#x3D; https:&#x2F;&#x2F;pypi.tuna.tsinghua.edu.cn&#x2F;simple</span><br><span class="line">[install]</span><br><span class="line">trusted-host&#x3D;mirrors.aliyun.com</span><br></pre></td></tr></table></figure>
+<p>**<br>国内镜像源参考<br>阿里云 <a href="http://mirrors.aliyun.com/pypi/simple/">http://mirrors.aliyun.com/pypi/simple/</a><br>中国科技大学 <a href="https://pypi.mirrors.ustc.edu.cn/simple/">https://pypi.mirrors.ustc.edu.cn/simple/</a><br>豆瓣(douban) <a href="http://pypi.douban.com/simple/">http://pypi.douban.com/simple/</a><br>清华大学 <a href="https://pypi.tuna.tsinghua.edu.cn/simple/">https://pypi.tuna.tsinghua.edu.cn/simple/</a><br>中国科学技术大学 <a href="http://pypi.mirrors.ustc.edu.cn/simple/">http://pypi.mirrors.ustc.edu.cn/simple/</a><br>**</p>
+]]></content>
+      <categories>
+        <category>技术</category>
+        <category>devops</category>
+        <category>pip</category>
+      </categories>
+      <tags>
+        <tag>pip修改源</tag>
+      </tags>
+  </entry>
+  <entry>
     <title>mac安装mysql以及问题</title>
     <url>/2020/04/19/installMysqlForLocal/</url>
     <content><![CDATA[<p>*由于我使用mac，所以本文基于mac讲述搭建过程</p>
@@ -241,6 +227,23 @@ hexo s --debug #debug 运行</code></pre>
       </categories>
       <tags>
         <tag>mysql运用</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>家庭装修流程以及要点(硬装&amp;软装)</title>
+    <url>/2021/07/19/decorating/</url>
+    <content><![CDATA[<p>相信每个人都有过一次装修的经历，耗费大量的人力财力，也许还才过不少的坑花了不少冤枉钱，以下的思维导图是我在装修过程中总结的经验，希望对大家有所帮助。</p>
+<a id="more"></a>
+<p><img src="/2021/07/19/decorating/decorating.png" alt="decorating"></p>
+]]></content>
+      <categories>
+        <category>生活</category>
+        <category>装修</category>
+      </categories>
+      <tags>
+        <tag>装修</tag>
+        <tag>硬装</tag>
+        <tag>软装</tag>
       </tags>
   </entry>
 </search>
